@@ -1,0 +1,14 @@
+amirtest@Amirs-MacBook-Air CI-CD % git --version
+git version 2.50.0
+amirtest@Amirs-MacBook-Air CI-CD % git config --global user.name
+Amir Osman
+amirtest@Amirs-MacBook-Air CI-CD % git config --global user.email
+151637627+AmirOsman03@users.noreply.github.com
+amirtest@Amirs-MacBook-Air CI-CD % git config --list
+credential.helper=osxkeychain
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+filter.lfs.clean=git-lfs clean -- %f
+user.name=Amir Osman
+user.email=151637627+AmirOsman03@users.noreply.github.com

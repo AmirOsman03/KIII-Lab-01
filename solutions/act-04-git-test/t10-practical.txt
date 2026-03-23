@@ -1,0 +1,48 @@
+amirtest@Amirs-MacBook-Air merge-test % git branch
+  main
+* topic-branch
+amirtest@Amirs-MacBook-Air merge-test % git checkout main
+Switched to branch 'main'
+amirtest@Amirs-MacBook-Air merge-test % echo "Project Roadmap" >> docs.txt
+amirtest@Amirs-MacBook-Air merge-test % git add docs.txt 
+amirtest@Amirs-MacBook-Air merge-test % git commit -m "Added roadmap"
+[main 4043a88] Added roadmap
+ 1 file changed, 1 insertion(+)
+ create mode 100644 docs.txt
+amirtest@Amirs-MacBook-Air merge-test % echo "Core logic v1" >> app.py
+amirtest@Amirs-MacBook-Air merge-test % git add app.py 
+amirtest@Amirs-MacBook-Air merge-test % git commit -m "Base commit 2"
+[main c69fec2] Base commit 2
+ 1 file changed, 1 insertion(+)
+ create mode 100644 app.py
+amirtest@Amirs-MacBook-Air merge-test % git checkout topic-branch
+Switched to branch 'topic-branch'
+amirtest@Amirs-MacBook-Air merge-test % echo "UI styles" >> styles.css
+amirtest@Amirs-MacBook-Air merge-test % echo "Unfinished feature" >> app.py
+amirtest@Amirs-MacBook-Air merge-test % git status -s
+?? app.py
+?? secret.txt
+?? styles.css
+?? text.txt
+amirtest@Amirs-MacBook-Air merge-test % git add . 
+amirtest@Amirs-MacBook-Air merge-test % git commit -m "Added features"
+[topic-branch e7c8466] Added features
+ 4 files changed, 4 insertions(+)
+ create mode 100644 app.py
+ create mode 100644 secret.txt
+ create mode 100644 styles.css
+ create mode 100644 text.txt
+amirtest@Amirs-MacBook-Air merge-test % git log --oneline --graph --all 
+* e7c8466 (HEAD -> topic-branch) Added features
+* 1dd13f2 (tag: v1.4) Topic commit 2
+* 42ca48d Topic commit 1
+| * c69fec2 (main) Base commit 2
+| * 4043a88 Added roadmap
+|/  
+* 5ee8784 Main branch update
+*   1e1d424 Merge branch 'topic-branch'
+|\  
+| * 3d27b67 Commit on topic-branch
+* | 6c6ecac Diverging commit on main
+|/  
+* d7c0af8 Initial commit

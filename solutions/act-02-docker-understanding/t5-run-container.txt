@@ -1,0 +1,26 @@
+amirtest@Amirs-MacBook-Air CI-CD % clear
+amirtest@Amirs-MacBook-Air CI-CD % docker pull ubuntu
+Using default tag: latest
+latest: Pulling from library/ubuntu
+66a4bbbfab88: Download complete 
+Digest: sha256:d1e2e92c075e5ca139d51a140fff46f84315c0fdce203eab2807c7e495eff4f9
+Status: Downloaded newer image for ubuntu:latest
+docker.io/library/ubuntu:latest
+amirtest@Amirs-MacBook-Air CI-CD % docker run -it ubuntu /bin/bash
+root@f2a2361160b3:/# exit
+exit
+amirtest@Amirs-MacBook-Air CI-CD % docker ps -a
+CONTAINER ID   IMAGE                                        COMMAND                  CREATED          STATUS                      PORTS                                            NAMES
+f2a2361160b3   ubuntu                                       "/bin/bash"              15 seconds ago   Exited (0) 6 seconds ago                                                     lucid_hawking
+feca7b47ba20   postgres:17.4                                "docker-entrypoint.s…"   29 hours ago     Up 29 hours                 0.0.0.0:2345->5432/tcp                           jobly-backend-db-1
+2b9b7722e8f9   lab5-224018                                  "nginx -g 'daemon of…"   7 weeks ago      Exited (255) 30 hours ago   0.0.0.0:1935->1935/tcp, 0.0.0.0:8080->8080/tcp   multimedia-server
+2ea40ef2ed09   lab4-224018                                  "nginx -g 'daemon of…"   2 months ago     Exited (0) 2 months ago                                                      elastic_ritchie
+c5dc9c81fe5f   de7baa71dcbd                                 "nginx -g 'daemon of…"   2 months ago     Created                                                                      interesting_feynman
+1b6b9653ca2f   1e4913f7dca5                                 "nginx -g 'daemon of…"   2 months ago     Exited (0) 2 months ago                                                      inspiring_mclean
+6237d660b610   711d8c09d291                                 "nginx -g 'daemon of…"   2 months ago     Exited (0) 2 months ago                                                      cranky_shockley
+491ea539993d   78989e93fe04                                 "nginx -g 'daemon of…"   2 months ago     Exited (0) 2 months ago                                                      cranky_galileo
+0695f40ad02f   d20192c592c3                                 "nginx -g 'daemon of…"   2 months ago     Created                                                                      boring_beaver
+18112ae905f2   cc3a37ba2499                                 "--name lab4-server"     2 months ago     Created                     0.0.0.0:1935->1935/tcp, 0.0.0.0:8080->8080/tcp   romantic_blackburn
+62fc185db505   c1dcb6f055d5                                 "nginx -g 'daemon of…"   2 months ago     Exited (0) 2 months ago                                                      sweet_solomon
+858f62eb90c2   c1dcb6f055d5                                 "nginx -g 'daemon of…"   2 months ago     Exited (0) 2 months ago                                                      lab4-server
+4f5d0eb2f225   mcr.microsoft.com/mssql/server:2019-latest   "/opt/mssql/bin/perm…"   5 months ago     Exited (0) 7 weeks ago                                                       rdb-alpha-projects_devcontainer-db-1

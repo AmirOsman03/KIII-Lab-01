@@ -1,0 +1,20 @@
+amirtest@Amirs-MacBook-Air merge-test % git config --global alias.unstage 'reset HEAD --'
+amirtest@Amirs-MacBook-Air merge-test % git config --global alias.last 'log -1 HEAD'
+amirtest@Amirs-MacBook-Air merge-test % git config --global --list | grep alias
+alias.unstage=reset HEAD --
+alias.last=log -1 HEAD
+amirtest@Amirs-MacBook-Air merge-test % echo "sensitive data" > secret.txt
+amirtest@Amirs-MacBook-Air merge-test % git add secret.txt 
+amirtest@Amirs-MacBook-Air merge-test % git status -s 
+A  secret.txt
+?? text.txt
+amirtest@Amirs-MacBook-Air merge-test % git unstage secret.txt 
+amirtest@Amirs-MacBook-Air merge-test % git status -s
+?? secret.txt
+?? text.txt
+amirtest@Amirs-MacBook-Air merge-test % git last
+commit 1dd13f2e97ee6eca808c4e47c0af06cc71a005b0 (HEAD -> topic-branch, tag: v1.4)
+Author: Amir Osman <151637627+AmirOsman03@users.noreply.github.com>
+Date:   Sun Mar 8 22:44:06 2026 +0100
+
+    Topic commit 2

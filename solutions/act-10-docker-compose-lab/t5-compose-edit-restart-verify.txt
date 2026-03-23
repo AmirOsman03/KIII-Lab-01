@@ -1,0 +1,81 @@
+amirtest@Amirs-MacBook-Air compose-lab % nano docker-compose.yml
+amirtest@Amirs-MacBook-Air compose-lab % cat docker-compose.yml
+
+services:
+  web:
+    image: python:3.10
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/composeapp
+    working_dir: /composeapp
+    command: sh -c "pip install -r requirements.txt && python app.py"
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7
+    amirtest@Amirs-MacBook-Air compose-lab % docker compose up -d
+[+] Running 3/3
+ ✔ Network compose-lab_default    Created                                                                                               0.0s
+ ✔ Container compose-lab-redis-1  Started                                                                                               0.3s
+ ✔ Container compose-lab-web-1    Started                                                                                               0.4s
+amirtest@Amirs-MacBook-Air compose-lab % docker compose ps
+NAME                  IMAGE         COMMAND                  SERVICE   CREATED          STATUS          PORTS
+compose-lab-redis-1   redis:7       "docker-entrypoint.s…"   redis     11 seconds ago   Up 10 seconds   6379/tcp
+compose-lab-web-1     python:3.10   "sh -c 'pip install …"   web       11 seconds ago   Up 10 seconds   0.0.0.0:5000->5000/tcp
+amirtest@Amirs-MacBook-Air compose-lab % curl localhost:5000
+Hello! This page has been visited 1 times.%
+amirtest@Amirs-MacBook-Air compose-lab % curl localhost:5000
+Hello! This page has been visited 2 times.%
+amirtest@Amirs-MacBook-Air compose-lab % docker compose logs
+redis-1  | 1:C 16 Mar 2026 13:18:47.660 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-1  | 1:C 16 Mar 2026 13:18:47.660 * Redis version=7.4.8, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-1  | 1:C 16 Mar 2026 13:18:47.660 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-1  | 1:M 16 Mar 2026 13:18:47.660 * monotonic clock: POSIX clock_gettime
+redis-1  | 1:M 16 Mar 2026 13:18:47.660 * Running mode=standalone, port=6379.
+redis-1  | 1:M 16 Mar 2026 13:18:47.661 * Server initialized
+redis-1  | 1:M 16 Mar 2026 13:18:47.661 * Ready to accept connections tcp
+web-1    | Collecting flask
+web-1    |   Downloading flask-3.1.3-py3-none-any.whl (103 kB)
+web-1    |      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 103.4/103.4 kB 2.5 MB/s eta 0:00:00
+web-1    | Collecting redis
+web-1    |   Downloading redis-7.3.0-py3-none-any.whl (404 kB)
+web-1    |      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 404.4/404.4 kB 4.3 MB/s eta 0:00:00
+web-1    | Collecting itsdangerous>=2.2.0
+web-1    |   Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+web-1    | Collecting werkzeug>=3.1.0
+web-1    |   Downloading werkzeug-3.1.6-py3-none-any.whl (225 kB)
+web-1    |      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 225.2/225.2 kB 6.6 MB/s eta 0:00:00
+web-1    | Collecting click>=8.1.3
+web-1    |   Downloading click-8.3.1-py3-none-any.whl (108 kB)
+web-1    |      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 108.3/108.3 kB 7.2 MB/s eta 0:00:00
+web-1    | Collecting jinja2>=3.1.2
+web-1    |   Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+web-1    |      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.9/134.9 kB 6.8 MB/s eta 0:00:00
+web-1    | Collecting markupsafe>=2.1.1
+web-1    |   Downloading markupsafe-3.0.3-cp310-cp310-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (22 kB)
+web-1    | Collecting blinker>=1.9.0
+web-1    |   Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+web-1    | Collecting async-timeout>=4.0.3
+web-1    |   Downloading async_timeout-5.0.1-py3-none-any.whl (6.2 kB)
+web-1    | Installing collected packages: markupsafe, itsdangerous, click, blinker, async-timeout, werkzeug, redis, jinja2, flask
+web-1    | Successfully installed async-timeout-5.0.1 blinker-1.9.0 click-8.3.1 flask-3.1.3 itsdangerous-2.2.0 jinja2-3.1.6 markupsafe-3.0.3 redis-7.3.0 werkzeug-3.1.6
+web-1    | WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+web-1    |
+web-1    | [notice] A new release of pip is available: 23.0.1 -> 26.0.1
+web-1    | [notice] To update, run: pip install --upgrade pip
+web-1    |  * Serving Flask app 'app'
+web-1    |  * Debug mode: off
+web-1    | WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+web-1    |  * Running on all addresses (0.0.0.0)
+web-1    |  * Running on http://127.0.0.1:5000
+web-1    |  * Running on http://172.22.0.3:5000
+web-1    | Press CTRL+C to quit
+web-1    | 172.22.0.1 - - [16/Mar/2026 13:20:01] "GET / HTTP/1.1" 200 -
+web-1    | 172.22.0.1 - - [16/Mar/2026 13:20:25] "GET / HTTP/1.1" 200 -
+amirtest@Amirs-MacBook-Air compose-lab % docker compose down
+[+] Running 3/2
+ ✔ Container compose-lab-web-1    Removed                                                                                              10.2s
+ ✔ Container compose-lab-redis-1  Removed                                                                                               0.2s
+ ✔ Network compose-lab_default    Removed

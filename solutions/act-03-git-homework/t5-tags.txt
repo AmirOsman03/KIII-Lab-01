@@ -1,0 +1,23 @@
+amirtest@Amirs-MacBook-Air merge-test % git tag -a v1.4 -m "my version 1.4"
+amirtest@Amirs-MacBook-Air merge-test % git tag
+v1.4
+amirtest@Amirs-MacBook-Air merge-test % git show v1.4
+tag v1.4
+Tagger: Amir Osman <151637627+AmirOsman03@users.noreply.github.com>
+Date:   Sun Mar 8 22:48:28 2026 +0100
+
+my version 1.4
+
+commit 1dd13f2e97ee6eca808c4e47c0af06cc71a005b0 (HEAD -> topic-branch, tag: v1.4)
+Author: Amir Osman <151637627+AmirOsman03@users.noreply.github.com>
+Date:   Sun Mar 8 22:44:06 2026 +0100
+
+    Topic commit 2
+
+diff --git a/text2.txt b/text2.txt
+new file mode 100644
+index 0000000..758ee75
+--- /dev/null
++++ b/text2.txt
+@@ -0,0 +1 @@
++Topic text 2

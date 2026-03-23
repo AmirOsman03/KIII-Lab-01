@@ -1,0 +1,66 @@
+amirtest@Amirs-MacBook-Air compose-lab % docker compose up -d
+WARN[0000] /Users/amirtest/Documents/CI-CD/compose-lab/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion
+[+] Running 2/2
+ ✔ Container compose-lab-redis-1  Started                                                                                               0.2s
+ ✔ Container compose-lab-web-1    Started                                                                                               0.3s
+amirtest@Amirs-MacBook-Air compose-lab % docker compose ps
+WARN[0000] /Users/amirtest/Documents/CI-CD/compose-lab/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion
+NAME                  IMAGE     COMMAND                  SERVICE   CREATED              STATUS         PORTS
+compose-lab-redis-1   redis:7   "docker-entrypoint.s…"   redis     About a minute ago   Up 6 seconds   6379/tcp
+amirtest@Amirs-MacBook-Air compose-lab % docker compose logs
+WARN[0000] /Users/amirtest/Documents/CI-CD/compose-lab/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion
+redis-1  | 1:C 16 Mar 2026 13:05:54.518 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-1  | 1:C 16 Mar 2026 13:05:54.518 * Redis version=7.4.8, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-1  | 1:C 16 Mar 2026 13:05:54.518 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-1  | 1:M 16 Mar 2026 13:05:54.518 * monotonic clock: POSIX clock_gettime
+redis-1  | 1:M 16 Mar 2026 13:05:54.519 * Running mode=standalone, port=6379.
+redis-1  | 1:M 16 Mar 2026 13:05:54.526 * Server initialized
+redis-1  | 1:M 16 Mar 2026 13:05:54.526 * Ready to accept connections tcp
+redis-1  | 1:signal-handler (1773666361) Received SIGTERM scheduling shutdown...
+redis-1  | 1:M 16 Mar 2026 13:06:01.672 * User requested shutdown...
+redis-1  | 1:M 16 Mar 2026 13:06:01.672 * Saving the final RDB snapshot before exiting.
+redis-1  | 1:M 16 Mar 2026 13:06:01.674 * DB saved on disk
+redis-1  | 1:M 16 Mar 2026 13:06:01.674 # Redis is now ready to exit, bye bye...
+redis-1  | 1:C 16 Mar 2026 13:07:38.620 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-1  | 1:C 16 Mar 2026 13:07:38.620 * Redis version=7.4.8, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-1  | 1:C 16 Mar 2026 13:07:38.620 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-1  | 1:M 16 Mar 2026 13:07:38.620 * monotonic clock: POSIX clock_gettime
+redis-1  | 1:M 16 Mar 2026 13:07:38.621 * Running mode=standalone, port=6379.
+redis-1  | 1:M 16 Mar 2026 13:07:38.621 * Server initialized
+redis-1  | 1:M 16 Mar 2026 13:07:38.621 * Loading RDB produced by version 7.4.8
+redis-1  | 1:M 16 Mar 2026 13:07:38.621 * RDB age 97 seconds
+redis-1  | 1:M 16 Mar 2026 13:07:38.621 * RDB memory usage when created 0.94 Mb
+redis-1  | 1:M 16 Mar 2026 13:07:38.621 * Done loading RDB, keys loaded: 0, keys expired: 0.
+redis-1  | 1:M 16 Mar 2026 13:07:38.621 * DB loaded from disk: 0.000 seconds
+redis-1  | 1:M 16 Mar 2026 13:07:38.621 * Ready to accept connections tcp
+web-1    | python: can't open file '/composeapp/app.py': [Errno 2] No such file or directory
+web-1    | python: can't open file '/composeapp/app.py': [Errno 2] No such file or directory
+amirtest@Amirs-MacBook-Air compose-lab % docker compose logs -f
+WARN[0000] /Users/amirtest/Documents/CI-CD/compose-lab/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion
+redis-1  | 1:C 16 Mar 2026 13:05:54.518 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-1  | 1:C 16 Mar 2026 13:05:54.518 * Redis version=7.4.8, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-1  | 1:C 16 Mar 2026 13:05:54.518 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-1  | 1:M 16 Mar 2026 13:05:54.518 * monotonic clock: POSIX clock_gettime
+redis-1  | 1:M 16 Mar 2026 13:05:54.519 * Running mode=standalone, port=6379.
+redis-1  | 1:M 16 Mar 2026 13:05:54.526 * Server initialized
+redis-1  | 1:M 16 Mar 2026 13:05:54.526 * Ready to accept connections tcp
+redis-1  | 1:signal-handler (1773666361) Received SIGTERM scheduling shutdown...
+redis-1  | 1:M 16 Mar 2026 13:06:01.672 * User requested shutdown...
+redis-1  | 1:M 16 Mar 2026 13:06:01.672 * Saving the final RDB snapshot before exiting.
+redis-1  | 1:M 16 Mar 2026 13:06:01.674 * DB saved on disk
+redis-1  | 1:M 16 Mar 2026 13:06:01.674 # Redis is now ready to exit, bye bye...
+redis-1  | 1:C 16 Mar 2026 13:07:38.620 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-1  | 1:C 16 Mar 2026 13:07:38.620 * Redis version=7.4.8, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-1  | 1:C 16 Mar 2026 13:07:38.620 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-1  | 1:M 16 Mar 2026 13:07:38.620 * monotonic clock: POSIX clock_gettime
+redis-1  | 1:M 16 Mar 2026 13:07:38.621 * Running mode=standalone, port=6379.
+redis-1  | 1:M 16 Mar 2026 13:07:38.621 * Server initialized
+redis-1  | 1:M 16 Mar 2026 13:07:38.621 * Loading RDB produced by version 7.4.8
+redis-1  | 1:M 16 Mar 2026 13:07:38.621 * RDB age 97 seconds
+redis-1  | 1:M 16 Mar 2026 13:07:38.621 * RDB memory usage when created 0.94 Mb
+redis-1  | 1:M 16 Mar 2026 13:07:38.621 * Done loading RDB, keys loaded: 0, keys expired: 0.
+redis-1  | 1:M 16 Mar 2026 13:07:38.621 * DB loaded from disk: 0.000 seconds
+redis-1  | 1:M 16 Mar 2026 13:07:38.621 * Ready to accept connections tcp
+web-1    | python: can't open file '/composeapp/app.py': [Errno 2] No such file or directory
+web-1    | python: can't open file '/composeapp/app.py': [Errno 2] No such file or directory
+^Ccanceled

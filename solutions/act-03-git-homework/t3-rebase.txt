@@ -1,0 +1,46 @@
+amirtest@Amirs-MacBook-Air merge-test % git checkout topic-branch
+Switched to branch 'topic-branch'
+amirtest@Amirs-MacBook-Air merge-test % echo "Topic text 1" >> text.txt
+amirtest@Amirs-MacBook-Air merge-test % git add file.txt 
+amirtest@Amirs-MacBook-Air merge-test % git commit -m "Topic commit 1" 
+[topic-branch b49ea3b] Topic commit 1
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file.txt
+amirtest@Amirs-MacBook-Air merge-test %  echo "Topic text 2" >> text2.txt
+amirtest@Amirs-MacBook-Air merge-test % git add text2.txt 
+amirtest@Amirs-MacBook-Air merge-test % git commit -m "Topic commit 2"
+[topic-branch bcadbeb] Topic commit 2
+ 1 file changed, 1 insertion(+)
+ create mode 100644 text2.txt
+amirtest@Amirs-MacBook-Air merge-test % git checkout main 
+Switched to branch 'main'
+amirtest@Amirs-MacBook-Air merge-test % echo "Main branch update" >> base.txt
+amirtest@Amirs-MacBook-Air merge-test % git add base.txt 
+amirtest@Amirs-MacBook-Air merge-test % git commit -m "Main branch update"
+[main 5ee8784] Main branch update
+ 1 file changed, 1 insertion(+)
+amirtest@Amirs-MacBook-Air merge-test % git log --oneline --decorate --graph --all
+* 5ee8784 (HEAD -> main) Main branch update
+*   1e1d424 Merge branch 'topic-branch'
+|\  
+* | 6c6ecac Diverging commit on main
+| | * bcadbeb (topic-branch) Topic commit 2
+| | * b49ea3b Topic commit 1
+| |/  
+| * 3d27b67 Commit on topic-branch
+|/  
+* d7c0af8 Initial commit
+amirtest@Amirs-MacBook-Air merge-test % git checkout topic-branch
+Switched to branch 'topic-branch'
+amirtest@Amirs-MacBook-Air merge-test % git rebase main
+Successfully rebased and updated refs/heads/topic-branch.
+amirtest@Amirs-MacBook-Air merge-test % git log --oneline --decorate --graph --all
+* 1dd13f2 (HEAD -> topic-branch) Topic commit 2
+* 42ca48d Topic commit 1
+* 5ee8784 (main) Main branch update
+*   1e1d424 Merge branch 'topic-branch'
+|\  
+| * 3d27b67 Commit on topic-branch
+* | 6c6ecac Diverging commit on main
+|/  
+* d7c0af8 Initial commit

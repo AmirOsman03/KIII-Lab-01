@@ -1,0 +1,38 @@
+amirtest@Amirs-MacBook-Air compose-lab % docker compose ps
+NAME                  IMAGE         COMMAND                  SERVICE   CREATED         STATUS         PORTS
+compose-lab-redis-1   redis:7       "docker-entrypoint.s…"   redis     2 minutes ago   Up 2 minutes   6379/tcp
+compose-lab-web-1     python:3.10   "sh -c 'pip install …"   web       2 minutes ago   Up 2 minutes   0.0.0.0:5002->5000/tcp
+amirtest@Amirs-MacBook-Air compose-lab % docker compose stop
+[+] Stopping 0/1
+[+] Stopping 0/1pose-lab-web-1  Stopping                                                                                                5.0s
+[+] Stopping 2/2pose-lab-web-1  Stopping                                                                                                7.5s
+ ✔ Container compose-lab-web-1    Stopped                                                                                              10.2s
+ ✔ Container compose-lab-redis-1  Stopped                                                                                               0.2s
+amirtest@Amirs-MacBook-Air compose-lab % docker compose ps
+NAME      IMAGE     COMMAND   SERVICE   CREATED   STATUS    PORTS
+amirtest@Amirs-MacBook-Air compose-lab % docker compose rm -f
+Going to remove compose-lab-web-1, compose-lab-redis-1
+[+] Removing 2/0
+ ✔ Container compose-lab-redis-1  Removed                                                                                               0.1s
+ ✔ Container compose-lab-web-1    Removed                                                                                               0.1s
+amirtest@Amirs-MacBook-Air compose-lab % docker compose up -d
+[+] Running 2/2
+ ✔ Container compose-lab-redis-1  Started                                                                                               0.3s
+ ✔ Container compose-lab-web-1    Started                                                                                               0.4s
+amirtest@Amirs-MacBook-Air compose-lab % docker compose ps
+NAME                  IMAGE         COMMAND                  SERVICE   CREATED         STATUS         PORTS
+compose-lab-redis-1   redis:7       "docker-entrypoint.s…"   redis     4 seconds ago   Up 4 seconds   6379/tcp
+compose-lab-web-1     python:3.10   "sh -c 'pip install …"   web       4 seconds ago   Up 4 seconds   0.0.0.0:5002->5000/tcp
+amirtest@Amirs-MacBook-Air compose-lab % docker compose down
+[+] Running 3/2
+ ✔ Container compose-lab-web-1    Removed                                                                                              10.2s
+ ✔ Container compose-lab-redis-1  Removed                                                                                               0.1s
+ ✔ Network compose-lab_default    Removed                                                                                               0.1s
+amirtest@Amirs-MacBook-Air compose-lab % docker compose ls
+NAME                STATUS              CONFIG FILES
+jobly-backend       running(1)          /Users/amirtest/Desktop/jobly-project/jobly-backend/docker-compose.yml
+trading_journal     running(1)          /Users/amirtest/Desktop/trading-project/Trading_Journal/docker-compose.yml
+
+# stop – stops running containers but keeps them on the system, so they can be started again later.
+# rm – removes stopped containers but does not remove networks or volumes created by Docker Compose.
+# down – stops and removes containers, networks, and other resources created by the compose project.

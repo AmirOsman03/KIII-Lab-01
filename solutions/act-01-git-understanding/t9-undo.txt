@@ -1,0 +1,24 @@
+amirtest@Amirs-MacBook-Air my-repo % git status -s 
+ M README.md
+amirtest@Amirs-MacBook-Air my-repo % git add README.md 
+amirtest@Amirs-MacBook-Air my-repo % git commit -m "wrong message"      
+[master 3e9262d] wrong message
+ 1 file changed, 1 insertion(+)
+amirtest@Amirs-MacBook-Air my-repo % git status -s
+amirtest@Amirs-MacBook-Air my-repo % git commit --amend -m "Fixed commit message"
+[master 353f841] Fixed commit message
+ Date: Thu Mar 5 21:30:24 2026 +0100
+ 1 file changed, 1 insertion(+)
+amirtest@Amirs-MacBook-Air my-repo % git log --oneline                           
+353f841 (HEAD -> master) Fixed commit message
+5048eeb Initial commit
+amirtest@Amirs-MacBook-Air my-repo % touch undo-test.txt
+amirtest@Amirs-MacBook-Air my-repo % git add undo-test.txt 
+amirtest@Amirs-MacBook-Air my-repo % git status -s 
+A  undo-test.txt
+amirtest@Amirs-MacBook-Air my-repo % git restore --staged undo-test.txt 
+amirtest@Amirs-MacBook-Air my-repo % git status -s                     
+?? undo-test.txt
+amirtest@Amirs-MacBook-Air my-repo % git restore README.md 
+amirtest@Amirs-MacBook-Air my-repo % git status -s
+?? undo-test.txt

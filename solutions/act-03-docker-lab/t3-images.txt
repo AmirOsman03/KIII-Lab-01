@@ -1,0 +1,36 @@
+amirtest@Amirs-MacBook-Air docker-repo % docker pull nginx:latest
+latest: Pulling from library/nginx
+3b66ab8c894c: Download complete 
+f2c05cdfb149: Download complete 
+e88d7844c33d: Download complete 
+4a89256e588a: Download complete 
+c813174c999b: Download complete 
+901e94f777d1: Download complete 
+2668e3434976: Download complete 
+Digest: sha256:0236ee02dcbce00b9bd83e0f5fbc51069e7e1161bd59d99885b3ae1734f3392e
+Status: Downloaded newer image for nginx:latest
+docker.io/library/nginx:latest
+amirtest@Amirs-MacBook-Air docker-repo % docker images
+REPOSITORY                       TAG           IMAGE ID       CREATED         SIZE
+nginx                            latest        0236ee02dcbc   13 days ago     255MB
+ubuntu                           22.04         3ba65aa20f86   3 weeks ago     106MB
+ubuntu                           latest        d1e2e92c075e   3 weeks ago     139MB
+lab5-224018                      latest        3cb2542c73a6   8 weeks ago     396MB
+<none>                           <none>        6762e6404859   8 weeks ago     396MB
+lab-224018                       latest        06ad33b70978   8 weeks ago     396MB
+<none>                           <none>        573eb9f166b9   8 weeks ago     141MB
+<none>                           <none>        e1598ca3a3d2   8 weeks ago     298MB
+lab4-224018                      latest        23360ddb6c10   2 months ago    141MB
+mcr.microsoft.com/mssql/server   2019-latest   f9e60a135a16   6 months ago    2.05GB
+postgres                         17.4          304ab8135187   12 months ago   640MB
+alpine                           3.11          bcae378eaced   4 years ago     8.68MB
+amirtest@Amirs-MacBook-Air docker-repo % docker run -d -p 8080:80 nginx:latest
+3e3468ec7e8a5594f07cf6b00955a72abe7dcec43aaca631c6a678f8c262c130
+amirtest@Amirs-MacBook-Air docker-repo % docker ps
+CONTAINER ID   IMAGE           COMMAND                  CREATED         STATUS         PORTS                    NAMES
+3e3468ec7e8a   nginx:latest    "/docker-entrypoint.…"   6 seconds ago   Up 4 seconds   0.0.0.0:8080->80/tcp     inspiring_curran
+feca7b47ba20   postgres:17.4   "docker-entrypoint.s…"   2 days ago      Up 2 days      0.0.0.0:2345->5432/tcp   jobly-backend-db-1
+amirtest@Amirs-MacBook-Air docker-repo % docker stop 3e3468ec7e8a
+3e3468ec7e8a
+amirtest@Amirs-MacBook-Air docker-repo % docker rm 3e3468ec7e8a
+3e3468ec7e8a

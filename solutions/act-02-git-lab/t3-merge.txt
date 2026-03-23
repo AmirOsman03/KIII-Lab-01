@@ -1,0 +1,49 @@
+amirtest@Amirs-MacBook-Air CI-CD % mkdir merge-test
+amirtest@Amirs-MacBook-Air CI-CD % cd merge-test 
+amirtest@Amirs-MacBook-Air merge-test % git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+hint:
+hint: Disable this message with "git config set advice.defaultBranchName false"
+Initialized empty Git repository in /Users/amirtest/Documents/CI-CD/merge-test/.git/
+amirtest@Amirs-MacBook-Air merge-test % echo "Initial content" > base.txt
+amirtest@Amirs-MacBook-Air merge-test % git add .
+amirtest@Amirs-MacBook-Air merge-test % git commit -m "Initial commit"
+[master (root-commit) d7c0af8] Initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 base.txt
+amirtest@Amirs-MacBook-Air merge-test % git checkout -b topic-branch
+Switched to a new branch 'topic-branch'
+amirtest@Amirs-MacBook-Air merge-test % echo "Topic change" > topic.txt
+amirtest@Amirs-MacBook-Air merge-test % git add topic.txt 
+amirtest@Amirs-MacBook-Air merge-test % git commit -m "Commit on topic-branch"
+[topic-branch 3d27b67] Commit on topic-branch
+ 1 file changed, 1 insertion(+)
+ create mode 100644 topic.txt
+amirtest@Amirs-MacBook-Air merge-test % git checkout master
+Switched to branch 'master'
+amirtest@Amirs-MacBook-Air merge-test % echo "Main change" > base.txt    
+amirtest@Amirs-MacBook-Air merge-test % git add base.txt 
+amirtest@Amirs-MacBook-Air merge-test % git commit -m "Diverging commit on main"  
+[master 6c6ecac] Diverging commit on main
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+amirtest@Amirs-MacBook-Air merge-test % git merge topic-branch --no-edit
+Merge made by the 'ort' strategy.
+ topic.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 topic.txt
+amirtest@Amirs-MacBook-Air merge-test % git log --oneline --decorate --graph --all
+*   1e1d424 (HEAD -> master) Merge branch 'topic-branch'
+|\  
+| * 3d27b67 (topic-branch) Commit on topic-branch
+* | 6c6ecac Diverging commit on main
+|/  
+* d7c0af8 Initial commit

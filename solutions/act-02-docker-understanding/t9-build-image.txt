@@ -1,0 +1,43 @@
+amirtest@Amirs-MacBook-Air docker-repo % touch Dockerfile
+amirtest@Amirs-MacBook-Air docker-repo % ls
+Dockerfile
+amirtest@Amirs-MacBook-Air docker-repo % nano Dockerfile 
+amirtest@Amirs-MacBook-Air docker-repo % docker build -t myimage:v1 .
+[+] Building 2.9s (5/5) FINISHED                                                                                         docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                     0.0s
+ => => transferring dockerfile: 82B                                                                                                      0.0s
+ => [internal] load metadata for docker.io/library/alpine:latest                                                                         1.9s
+ => [internal] load .dockerignore                                                                                                        0.0s
+ => => transferring context: 2B                                                                                                          0.0s
+ => [1/1] FROM docker.io/library/alpine:latest@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659                   0.7s
+ => => resolve docker.io/library/alpine:latest@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659                   0.0s
+ => => sha256:d8ad8cd72600f46cc068e16c39046ebc76526e41051f43a8c249884b200936c0 4.20MB / 4.20MB                                           0.7s
+ => exporting to image                                                                                                                   0.8s
+ => => exporting layers                                                                                                                  0.0s
+ => => exporting manifest sha256:003308ab438692327d0468f02558a04895de0c62b3fca2ef65dbdad79213c6ab                                        0.0s
+ => => exporting config sha256:097ad395acc7f468995e878e0c9e6e03747dfeef5b7b4608bb70442d48d17c7e                                          0.0s
+ => => exporting attestation manifest sha256:fd90ed63c3a017c04bb3e567cf7cd2b5298d16c6fadb70af4f881806f3e49edc                            0.0s
+ => => exporting manifest list sha256:bfc017ef50a76175f8e4a3a08eb4621891690aa7f84619adae12a7ad2ff0fba9                                   0.0s
+ => => naming to docker.io/library/myimage:v1                                                                                            0.0s
+ => => unpacking to docker.io/library/myimage:v1                                                                                         0.8s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/cufqiry028qtlhp0z686lvhek
+
+ 1 warning found (use docker --debug to expand):
+ - JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS signals (line 2)
+amirtest@Amirs-MacBook-Air docker-repo % docker images
+REPOSITORY                       TAG           IMAGE ID       CREATED         SIZE
+ubuntu                           latest        d1e2e92c075e   3 weeks ago     139MB
+myimage                          v1            bfc017ef50a7   5 weeks ago     13.6MB
+lab5-224018                      latest        3cb2542c73a6   7 weeks ago     396MB
+<none>                           <none>        6762e6404859   7 weeks ago     396MB
+lab-224018                       latest        06ad33b70978   7 weeks ago     396MB
+<none>                           <none>        573eb9f166b9   7 weeks ago     141MB
+<none>                           <none>        e1598ca3a3d2   7 weeks ago     298MB
+lab4-224018                      latest        23360ddb6c10   2 months ago    141MB
+mcr.microsoft.com/mssql/server   2019-latest   f9e60a135a16   6 months ago    2.05GB
+postgres                         17.4          304ab8135187   12 months ago   640MB
+alpine                           3.11          bcae378eaced   4 years ago     8.68MB
+amirtest@Amirs-MacBook-Air docker-repo % docker rmi myimage:v1
+Untagged: myimage:v1
+Deleted: sha256:bfc017ef50a76175f8e4a3a08eb4621891690aa7f84619adae12a7ad2ff0fba9

@@ -1,0 +1,16 @@
+amirtest@Amirs-MacBook-Air docker-repo % docker run --name myubuntu -it ubuntu:22.04 /bin/bash
+root@3137e8bfd34c:/# exit
+exit
+amirtest@Amirs-MacBook-Air docker-repo % docker start myubuntu                                
+myubuntu
+amirtest@Amirs-MacBook-Air docker-repo % docker attach myubuntu
+root@3137e8bfd34c:/# exit
+exit
+amirtest@Amirs-MacBook-Air docker-repo % docker stop myubuntu
+myubuntu
+amirtest@Amirs-MacBook-Air docker-repo % docker logs myubuntu
+root@3137e8bfd34c:/# exit
+exit
+root@3137e8bfd34c:/# exit
+exit
+amirtest@Amirs-MacBook-Air docker-repo % 

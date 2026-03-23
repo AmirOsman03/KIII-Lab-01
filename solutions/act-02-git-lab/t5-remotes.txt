@@ -1,0 +1,16 @@
+amirtest@Amirs-MacBook-Air merge-test % git remote -v
+amirtest@Amirs-MacBook-Air merge-test % git remote add origin https://github.com/AmirOsman03/git-lab-task.git 2>/dev/null
+amirtest@Amirs-MacBook-Air merge-test % git remote -v                                                                    
+origin  https://github.com/AmirOsman03/git-lab-task.git (fetch)
+origin  https://github.com/AmirOsman03/git-lab-task.git (push)
+amirtest@Amirs-MacBook-Air merge-test % git push -u origin main
+Enumerating objects: 23, done.
+Counting objects: 100% (23/23), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (14/14), done.
+Writing objects: 100% (23/23), 1.99 KiB | 1.99 MiB/s, done.
+Total 23 (delta 4), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (4/4), done.
+To https://github.com/AmirOsman03/git-lab-task.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.

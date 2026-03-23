@@ -1,0 +1,14 @@
+services:
+  web:
+    image: python:3.10
+    command: sh -c "pip install flask redis && python app.py"
+    ports:
+      - "5002:5000"
+    volumes:
+      - .:/composeapp
+    working_dir: /composeapp
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7

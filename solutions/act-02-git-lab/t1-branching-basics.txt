@@ -1,0 +1,20 @@
+amirtest@Amirs-MacBook-Air my-repo % git branch
+* master
+amirtest@Amirs-MacBook-Air my-repo % git checkout -b feature-branch
+Switched to a new branch 'feature-branch'
+amirtest@Amirs-MacBook-Air my-repo % touch feature.txt
+amirtest@Amirs-MacBook-Air my-repo % git add feature.txt 
+amirtest@Amirs-MacBook-Air my-repo % git commit -m "Added txt file on feature-branch"
+[feature-branch cca36e1] Added txt file on feature-branch
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 feature.txt
+amirtest@Amirs-MacBook-Air my-repo % git checkout master
+Switched to branch 'master'
+amirtest@Amirs-MacBook-Air my-repo % ls -l
+total 8
+-rw-r--r--  1 amirtest  staff  13 Mar  5 21:28 README.md
+-rw-r--r--  1 amirtest  staff   0 Mar  5 21:31 undo-test.txt
+amirtest@Amirs-MacBook-Air my-repo % git log --oneline --all
+cca36e1 (feature-branch) Added txt file on feature-branch
+353f841 (HEAD -> master) Fixed commit message
+5048eeb Initial commit

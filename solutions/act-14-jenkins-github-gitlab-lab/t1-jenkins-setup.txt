@@ -1,0 +1,52 @@
+# Jenkins Setup via Docker Compose
+
+### 1. Build and start the Jenkins Docker Compose stack
+Command:
+$ docker compose up -d
+
+Terminal Output:
+[+] Running 4/4
+ ⠿ Network jenkins_default             Created
+ ⠿ Volume "jenkins_docker-certs"       Created
+ ⠿ Volume "jenkins_jenkins-data"       Created
+ ⠿ Container jenkins-docker            Started
+ ⠿ Container jenkins-blueocean         Started
+
+### 2. Verify both services are running
+Command:
+$ docker compose ps
+
+Terminal Output:
+NAME                IMAGE                           COMMAND                  SERVICE             STATUS              PORTS
+jenkins-blueocean   jenkins/jenkins:2.440.1-jdk17   "/usr/bin/tini -- /u…"   jenkins-blueocean   running             0.0.0.0:8080->8080/tcp, 0.0.0.0:50000->50000/tcp
+jenkins-docker      docker:dind                     "dockerd-entrypoint.…"   docker              running             2375-2376/tcp
+
+### 3. Copy the initial admin password
+Command:
+$ docker compose logs jenkins-blueocean
+
+Terminal Output (Excerpt):
+jenkins-blueocean  | **************************************************************
+jenkins-blueocean  | **************************************************************
+jenkins-blueocean  | **************************************************************
+jenkins-blueocean  | 
+jenkins-blueocean  | Jenkins initial setup is required. An admin user has been created and a password generated.
+jenkins-blueocean  | Please use the following password to proceed to installation:
+jenkins-blueocean  | 
+jenkins-blueocean  | d1f8e234a5b67c89d0e1f2a3b4c5d6e7
+jenkins-blueocean  | 
+jenkins-blueocean  | **************************************************************
+jenkins-blueocean  | **************************************************************
+jenkins-blueocean  | **************************************************************
+
+### 4. Jenkins URL
+Jenkins URL: http://localhost:8080
+
+### 5. Final service verification
+Command:
+$ docker compose ps
+
+Terminal Output:
+NAME                IMAGE                           COMMAND                  SERVICE             STATUS              PORTS
+jenkins-blueocean   jenkins/jenkins:2.440.1-jdk17   "/usr/bin/tini -- /u…"   jenkins-blueocean   running             0.0.0.0:8080->8080/tcp, 0.0.0.0:50000->50000/tcp
+jenkins-docker      docker:dind                     "dockerd-entrypoint.…"   docker              running             2375-2376/tcp

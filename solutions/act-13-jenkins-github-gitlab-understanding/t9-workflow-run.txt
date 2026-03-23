@@ -1,0 +1,6 @@
+Workflow Name: CI Pipeline
+Trigger Event: push
+Jobs:
+  - build-and-test
+  - deploy-preview
+Overall Run Status: Success

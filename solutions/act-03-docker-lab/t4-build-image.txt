@@ -1,0 +1,57 @@
+amirtest@Amirs-MacBook-Air CI-CD % cd docker-repo 
+amirtest@Amirs-MacBook-Air docker-repo % mkdir docker-lab
+amirtest@Amirs-MacBook-Air docker-repo % cd docker-lab 
+amirtest@Amirs-MacBook-Air docker-lab % nano Dockerfile
+amirtest@Amirs-MacBook-Air docker-lab % cat Dockerfile 
+FROM nginx:alpine
+RUN echo "Hello from Docker Lab" > /usr/share/nginx/html/index.html
+EXPOSE 80
+amirtest@Amirs-MacBook-Air docker-lab % docker build -t docker-lab-nginx:v1 .
+[+] Building 4.9s (6/6) FINISHED                                                                                                           docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                       0.0s
+ => => transferring dockerfile: 133B                                                                                                                       0.0s
+ => [internal] load metadata for docker.io/library/nginx:alpine                                                                                            1.9s
+ => [internal] load .dockerignore                                                                                                                          0.0s
+ => => transferring context: 2B                                                                                                                            0.0s
+ => [1/2] FROM docker.io/library/nginx:alpine@sha256:1d13701a5f9f3fb01aaa88cef2344d65b6b5bf6b7d9fa4cf0dca557a8d7702ba                                      2.5s
+ => => resolve docker.io/library/nginx:alpine@sha256:1d13701a5f9f3fb01aaa88cef2344d65b6b5bf6b7d9fa4cf0dca557a8d7702ba                                      0.0s
+ => => sha256:7833e4e4252caed7bfc2fa1e0dfb929d975482f39ccc04e1444ab7f121cc882d 1.21kB / 1.21kB                                                             0.7s
+ => => sha256:da8475fa07c770fbfdc5a1bbb5cbd8c44fea3c125feb65eb76a1c199c85184bd 19.71MB / 19.71MB                                                           2.3s
+ => => sha256:88799a707571093c0492a622acc0dbaae6337f23bd486eadf27ca684def26a7a 1.40kB / 1.40kB                                                             0.5s
+ => => sha256:821790ca706fdc0c24606a10201118cec0f6b3051da3b31366cf0e62ec23ab67 402B / 402B                                                                 0.7s
+ => => sha256:9084d2ffc28327306889767de8533d0d890e8e540797ce9933a917927dde87fd 953B / 953B                                                                 0.3s
+ => => sha256:31d394b0c9eda37c098db2471823834f196fc546d924d31f47e554b378133051 622B / 622B                                                                 0.3s
+ => => sha256:c5ad07fbd6e6555e50b0a471f744c9373664dff6236d23b1c2d4c37903012296 1.87MB / 1.87MB                                                             0.8s
+ => => extracting sha256:c5ad07fbd6e6555e50b0a471f744c9373664dff6236d23b1c2d4c37903012296                                                                  0.1s
+ => => extracting sha256:31d394b0c9eda37c098db2471823834f196fc546d924d31f47e554b378133051                                                                  0.0s
+ => => extracting sha256:9084d2ffc28327306889767de8533d0d890e8e540797ce9933a917927dde87fd                                                                  0.0s
+ => => extracting sha256:821790ca706fdc0c24606a10201118cec0f6b3051da3b31366cf0e62ec23ab67                                                                  0.0s
+ => => extracting sha256:7833e4e4252caed7bfc2fa1e0dfb929d975482f39ccc04e1444ab7f121cc882d                                                                  0.0s
+ => => extracting sha256:88799a707571093c0492a622acc0dbaae6337f23bd486eadf27ca684def26a7a                                                                  0.0s
+ => => extracting sha256:da8475fa07c770fbfdc5a1bbb5cbd8c44fea3c125feb65eb76a1c199c85184bd                                                                  0.2s
+ => [2/2] RUN echo "Hello from Docker Lab" > /usr/share/nginx/html/index.html                                                                              0.2s
+ => exporting to image                                                                                                                                     0.1s
+ => => exporting layers                                                                                                                                    0.0s
+ => => exporting manifest sha256:fb424f9283b1e99ead3991cf446f42ccd55db99969200e1b2823bf41af13a6b5                                                          0.0s
+ => => exporting config sha256:f7b172dde55377542ca585f179343a5a98b4988ba97f3d7f533c57e86abacaa2                                                            0.0s
+ => => exporting attestation manifest sha256:061bfed74a23b93a638f79e78c99b66ca57b332c40f3d12a7acd61b3cb17a77a                                              0.0s
+ => => exporting manifest list sha256:1cdded7d1b4480dff45d8731f20af08ad57a6d23895ef43023c2262737ce5a98                                                     0.0s
+ => => naming to docker.io/library/docker-lab-nginx:v1                                                                                                     0.0s
+ => => unpacking to docker.io/library/docker-lab-nginx:v1                                                                                                  0.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/xkojmk27tagr74n73kptjz5qw
+amirtest@Amirs-MacBook-Air docker-lab % docker images
+REPOSITORY                       TAG           IMAGE ID       CREATED         SIZE
+docker-lab-nginx                 v1            1cdded7d1b44   5 seconds ago   91.7MB
+nginx                            latest        0236ee02dcbc   13 days ago     255MB
+ubuntu                           22.04         3ba65aa20f86   3 weeks ago     106MB
+ubuntu                           latest        d1e2e92c075e   3 weeks ago     139MB
+lab5-224018                      latest        3cb2542c73a6   8 weeks ago     396MB
+<none>                           <none>        6762e6404859   8 weeks ago     396MB
+lab-224018                       latest        06ad33b70978   8 weeks ago     396MB
+<none>                           <none>        573eb9f166b9   8 weeks ago     141MB
+<none>                           <none>        e1598ca3a3d2   8 weeks ago     298MB
+lab4-224018                      latest        23360ddb6c10   2 months ago    141MB
+mcr.microsoft.com/mssql/server   2019-latest   f9e60a135a16   6 months ago    2.05GB
+postgres                         17.4          304ab8135187   12 months ago   640MB
+alpine                           3.11          bcae378eaced   4 years ago     8.68MB

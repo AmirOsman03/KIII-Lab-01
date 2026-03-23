@@ -1,0 +1,36 @@
+amirtest@Amirs-MacBook-Air docker-python-homework % mkdir nginx-volume-test
+amirtest@Amirs-MacBook-Air docker-python-homework % cd nginx-volume-test 
+amirtest@Amirs-MacBook-Air nginx-volume-test % touch index.html
+amirtest@Amirs-MacBook-Air nginx-volume-test % docker run -d -p 8085:80 -v $(pwd)/index.html:/usr/share/nginx/html/index.html nginx:alpine 
+Unable to find image 'nginx:alpine' locally
+alpine: Pulling from library/nginx
+1595112a18c2: Download complete 
+96522e0e3029: Download complete 
+21c8549f3077: Download complete 
+0855a7fcacab: Download complete 
+c0700f204f65: Download complete 
+26a9266e72a1: Download complete 
+b15a4549c6e6: Download complete 
+Digest: sha256:f46cb72c7df02710e693e863a983ac42f6a9579058a59a35f1ae36c9958e4ce0
+Status: Downloaded newer image for nginx:alpine
+1a7a1e0629c3180cc372abf08a893bcbe28ffab087c06a60d2720688e5252ce3
+amirtest@Amirs-MacBook-Air nginx-volume-test % curl http://localhost:8085
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Nginx</title>
+</head>
+<body>
+    <h1>Hello from Volume Page</h1>
+</body>
+</html>% 
+amirtest@Amirs-MacBook-Air nginx-volume-test % curl http://localhost:8085
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Nginx</title>
+</head>
+<body>
+    <h1>Updated Volume Page</h1>
+</body>
+</html>%

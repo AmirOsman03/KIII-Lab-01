@@ -1,0 +1,70 @@
+amirtest@Amirs-MacBook-Air docker-homework % mkdir docker-logs-homework
+amirtest@Amirs-MacBook-Air docker-homework % cd docker-logs-homework 
+amirtest@Amirs-MacBook-Air docker-logs-homework % nano Dockerfile
+amirtest@Amirs-MacBook-Air docker-logs-homework % docker build -t docker-log-generator:v1 .
+[+] Building 1.2s (5/5) FINISHED                                                                                                       docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                   0.0s
+ => => transferring dockerfile: 123B                                                                                                                   0.0s
+ => [internal] load metadata for docker.io/library/alpine:latest                                                                                       1.0s
+ => [internal] load .dockerignore                                                                                                                      0.0s
+ => => transferring context: 2B                                                                                                                        0.0s
+ => CACHED [1/1] FROM docker.io/library/alpine:latest@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659                          0.0s
+ => => resolve docker.io/library/alpine:latest@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659                                 0.0s
+ => exporting to image                                                                                                                                 0.0s
+ => => exporting layers                                                                                                                                0.0s
+ => => exporting manifest sha256:97d6d7bd9af41d8ba35a8c67bd210b7817e4224ebe9b2541f7f5d02edb7e8aee                                                      0.0s
+ => => exporting config sha256:dd3edbea197db1f179ce915fa4693a615e42835e67f13347dee7d6edaff803ae                                                        0.0s
+ => => exporting attestation manifest sha256:60438b554672b2cea02a1ffed6b1a8c83879a8c4adac79fa5d3dc5d63a2701db                                          0.0s
+ => => exporting manifest list sha256:c69f6dda1907a46f0f97901617cfaf870b245c1759aa6a72491c4834e01be660                                                 0.0s
+ => => naming to docker.io/library/docker-log-generator:v1                                                                                             0.0s
+ => => unpacking to docker.io/library/docker-log-generator:v1                                                                                          0.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/zf4y8pgns30orwjdc9fg7klxa
+
+ 1 warning found (use docker --debug to expand):
+ - JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS signals (line 2)
+amirtest@Amirs-MacBook-Air docker-logs-homework % docker run -d docker-log-generator:v1
+269bbe43b643850e38b4c8f47643ee2610221f94878105151330b9209d004903
+amirtest@Amirs-MacBook-Air docker-logs-homework % docker ps   
+CONTAINER ID   IMAGE                     COMMAND                  CREATED          STATUS          PORTS                    NAMES
+269bbe43b643   docker-log-generator:v1   "/bin/sh -c 'sh -c '…"   13 seconds ago   Up 13 seconds                            strange_lichterman
+1a7a1e0629c3   nginx:alpine              "/docker-entrypoint.…"   9 minutes ago    Up 9 minutes    0.0.0.0:8085->80/tcp     infallible_dubinsky
+feca7b47ba20   postgres:17.4             "docker-entrypoint.s…"   4 days ago       Up 4 days       0.0.0.0:2345->5432/tcp   jobly-backend-db-1
+amirtest@Amirs-MacBook-Air docker-logs-homework % docker logs 269bbe43b643
+Docker log entry Thu Mar 12 14:03:57 UTC 2026
+Docker log entry Thu Mar 12 14:03:59 UTC 2026
+Docker log entry Thu Mar 12 14:04:01 UTC 2026
+Docker log entry Thu Mar 12 14:04:03 UTC 2026
+Docker log entry Thu Mar 12 14:04:05 UTC 2026
+Docker log entry Thu Mar 12 14:04:07 UTC 2026
+Docker log entry Thu Mar 12 14:04:09 UTC 2026
+Docker log entry Thu Mar 12 14:04:11 UTC 2026
+Docker log entry Thu Mar 12 14:04:13 UTC 2026
+Docker log entry Thu Mar 12 14:04:15 UTC 2026
+Docker log entry Thu Mar 12 14:04:17 UTC 2026
+Docker log entry Thu Mar 12 14:04:19 UTC 2026
+Docker log entry Thu Mar 12 14:04:21 UTC 2026
+Docker log entry Thu Mar 12 14:04:23 UTC 2026
+Docker log entry Thu Mar 12 14:04:25 UTC 2026
+amirtest@Amirs-MacBook-Air docker-logs-homework % docker logs 269bbe43b643
+Docker log entry Thu Mar 12 14:03:57 UTC 2026
+Docker log entry Thu Mar 12 14:03:59 UTC 2026
+Docker log entry Thu Mar 12 14:04:01 UTC 2026
+Docker log entry Thu Mar 12 14:04:03 UTC 2026
+Docker log entry Thu Mar 12 14:04:05 UTC 2026
+Docker log entry Thu Mar 12 14:04:07 UTC 2026
+Docker log entry Thu Mar 12 14:04:09 UTC 2026
+Docker log entry Thu Mar 12 14:04:11 UTC 2026
+Docker log entry Thu Mar 12 14:04:13 UTC 2026
+Docker log entry Thu Mar 12 14:04:15 UTC 2026
+Docker log entry Thu Mar 12 14:04:17 UTC 2026
+Docker log entry Thu Mar 12 14:04:19 UTC 2026
+Docker log entry Thu Mar 12 14:04:21 UTC 2026
+Docker log entry Thu Mar 12 14:04:23 UTC 2026
+Docker log entry Thu Mar 12 14:04:25 UTC 2026
+Docker log entry Thu Mar 12 14:04:27 UTC 2026
+Docker log entry Thu Mar 12 14:04:29 UTC 2026
+Docker log entry Thu Mar 12 14:04:31 UTC 2026
+Docker log entry Thu Mar 12 14:04:33 UTC 2026
+amirtest@Amirs-MacBook-Air docker-logs-homework % docker stop 269bbe43b643       
+269bbe43b643

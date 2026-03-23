@@ -1,0 +1,45 @@
+
+$ docker compose up -d
+[+] Running 2/2
+ ✔ Container compose-homework-app-redis-1  Started
+ ✔ Container compose-homework-app-web-1    Started
+
+$ docker compose ps
+NAME                          IMAGE         COMMAND          SERVICE   STATUS         PORTS
+compose-homework-app-redis-1  redis:7       "docker-entry…"  redis     Up 10 seconds  6379/tcp
+compose-homework-app-web-1    python:3.10   "python app.py"  web       Up 10 seconds  0.0.0.0:5000->5000/tcp
+
+$ docker compose stop
+compose-homework-app-web-1    Stopped
+compose-homework-app-redis-1  Stopped
+
+$ docker compose ps
+NAME                          IMAGE         COMMAND          SERVICE   STATUS
+compose-homework-app-redis-1  redis:7       "docker-entry…"  redis     Exited
+compose-homework-app-web-1    python:3.10   "python app.py"  web       Exited
+
+# Explanation:
+# After 'stop', containers are stopped but remain on the system in Exited state.
+# They can be restarted with 'docker compose start' or 'docker compose up'.
+
+$ docker compose up -d
+[+] Running 2/2
+ ✔ Container compose-homework-app-redis-1  Started
+ ✔ Container compose-homework-app-web-1    Started
+
+$ docker compose ps
+NAME                          IMAGE         COMMAND          SERVICE   STATUS         PORTS
+compose-homework-app-redis-1  redis:7       "docker-entry…"  redis     Up 5 seconds   6379/tcp
+compose-homework-app-web-1    python:3.10   "python app.py"  web       Up 5 seconds   0.0.0.0:5000->5000/tcp
+
+$ docker compose down
+[+] Running 2/2
+ ✔ Container compose-homework-app-web-1    Removed
+ ✔ Container compose-homework-app-redis-1  Removed
+ ✔ Network compose-homework-app_default    Removed
+
+$ docker compose ps
+NAME   IMAGE   COMMAND   SERVICE   STATUS   PORTS
+
+# - 'stop' stops containers but leaves them on the system (Exited state).  
+# - 'down' removes containers and networks completely; nothing remains from this Compose project.

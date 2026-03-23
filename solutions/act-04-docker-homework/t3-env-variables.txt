@@ -1,0 +1,10 @@
+amirtest@Amirs-MacBook-Air docker-homework % docker run -e USER_NAME=DockerStudent ubuntu:22.04 env
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=3507f86cabcb
+USER_NAME=DockerStudent
+HOME=/root
+amirtest@Amirs-MacBook-Air docker-homework % docker run -it -e COURSE=CI_CD ubuntu:22.04 /bin/bash
+root@503efeb3e4c8:/# env | grep COURSE
+COURSE=CI_CD
+root@503efeb3e4c8:/# exit
+exit

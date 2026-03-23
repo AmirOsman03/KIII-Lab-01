@@ -1,0 +1,15 @@
+
+services:
+  web:
+    image: python:3.10
+    ports:
+      - "5002:5000"
+    volumes:
+      - .:/composeapp
+    working_dir: /composeapp
+    command: sh -c "pip install -r requirements.txt && python app.py"
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7
